@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}註冊{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>註冊</h2>
+</div>
+
+<div id="user-register-form">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="{{form.username.id_for_label}}">使用者帳號</label> <br>
+        {{form.username}} <br>
+
+        <label for="{{form.password1.id_for_label}}">使用者密碼</label> <br>
+        {{form.password1}} <br>
+
+        <label for="{{form.password2.id_for_label}}">確認密碼</label> <br>
+        {{form.password2}} <br>
+
+
+        <div id="message"> {{message}}</div>
+
+        <div id="errors">
+            {% for field in form %}
+            {% if field.errors %}
+            {% for error in field.errors %}
+            {{error}} <br>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+            {% if non_field.errors %}
+            {% for error in non_field.errors %}
+            {{error}} <br>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <ul>
+            <li>長度為150個字或以下，僅限字母、數字和 @/./+/-/_。</li>
+            <li>你的密碼不能與其他個人資訊太相近。</li>
+            <li>你的密碼必須包含至少 8 個字元。</li>
+            <li>你不能使用常見的密碼。</li>
+            <li> 你的密碼不能全都是數字。</li>
+        </ul>
+
+        <input type="submit" name="" id="submit-button" value="確定">
+        <input type="reset" name="" id="reset" value="清除">
+
+
+    </form>
+</div>
+{% endblock %}

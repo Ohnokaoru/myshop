@@ -15,7 +15,7 @@ def user_register(request):
             form.save()
 
         else:
-            message = "資料錯誤"
+            message = "資料錯誤:"
 
     else:
         form = UserCreationForm()

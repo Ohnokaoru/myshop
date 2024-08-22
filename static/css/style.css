@@ -1,0 +1,29 @@
+body {
+    background-color: antiquewhite;
+}
+
+#title {
+    text-align: center;
+}
+
+#submit-button,
+#reset {
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+
+#user-register-form {
+    background-color: rgb(233, 196, 147);
+    width: 30%;
+    margin: auto;
+    padding: 20px;
+}
+
+#message,
+#errors {
+    font-weight: 700;
+    color: red;
+    margin-top: 5px;
+}
