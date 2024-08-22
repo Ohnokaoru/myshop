@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "user",
     "chalogin",
     "captcha",
+    "userprofile",
 ]
 
 MIDDLEWARE = [
