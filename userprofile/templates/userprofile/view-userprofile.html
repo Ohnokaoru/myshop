@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}個人資訊{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>個人資訊</h2>
+</div>
+<div id="view-userprofile">
+
+    真實姓名:{{userprofile.name}} <br>
+
+    性別:{{userprofile.gender}} <br>
+
+    生日:{{userprofile.birthday}} <br>
+
+    信箱:{{userprofile.email}} <br>
+
+    市話:{{userprofile.tel}} <br>
+
+    手機:{{userprofile.phone}} <br>
+
+    地址:{{userprofile.address}} <br>
+
+
+</div>
+
+<div id="edit-a-button">
+    <a href="{% url 'edit-userprofile' %}">修改</a>
+</div>
+
+
+{% endblock %}

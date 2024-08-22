@@ -145,10 +145,11 @@ ChaloginForm(AuthenticationForm)
       <x>240</x>
       <y>230</y>
       <w>150</w>
-      <h>70</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>userprofile
 --
+view_userprofile
 create_userprofile
 edit_userprofile</panel_attributes>
     <additional_attributes/>
