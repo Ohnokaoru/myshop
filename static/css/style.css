@@ -29,11 +29,13 @@ body {
 }
 
 
-#user-register-form {
+#user-register-form,
+#create-userprofile-form {
     background-color: rgb(233, 196, 147);
     width: 30%;
     margin: auto;
     padding: 20px;
+    border-radius: 5px;
 }
 
 #message,

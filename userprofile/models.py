@@ -9,7 +9,7 @@ class UserProfile(models.Model):
     gender = models.CharField(max_length=1, choices=gender_choices)
     birthday = models.DateField()
     email = models.EmailField()
-    tel = models.CharField(max_length=10, null=True)
+    tel = models.CharField(max_length=10, null=True, blank=True)
     phone = models.CharField(max_length=10)
     address = models.CharField(max_length=100)
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}建立個人資訊{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>建立個人資訊</h2>
+</div>
+
+<div id="create-userprofile-form">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="{{form.name.id_for_label}}">真實姓名</label> <br>
+        {{form.name}} <br>
+
+        <label for="{{form.gender.id_for_label}}">性別</label> <br>
+        {{form.gender}} <br>
+
+        <label for="{{form.birthday.id_for_label}}">生日</label> <br>
+        {{form.birthday}} <br>
+
+        <label for="{{form.email.id_for_label}}">信箱</label> <br>
+        {{form.email}} <br>
+
+        <label for="{{form.tel.id_for_label}}">市話</label> <br>
+        {{form.tel}} <br>
+
+        <label for="{{form.phone.id_for_label}}">手機</label> <br>
+        {{form.phone}} <br>
+
+        <label for="{{form.address.id_for_label}}">地址</label> <br>
+        {{form.address}} <br>
+
+
+        <input type="submit" name="" id="submit-button" value="確定">
+        <input type="reset" name="" id="reset" value="清除">
+
+
+        <div id="message"> {{message}}</div>
+
+        <div id="errors">
+            {% for field in form %}
+            {% if field.errors %}
+            {% for error in field.errors %}
+            {{error}} <br>
+            {% endfor %}
+            {% endif %}
+            {% endfor %}
+
+            {% if non_field.errors %}
+            {% for error in non_field.errors %}
+            {{error}} <br>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+
+{% endblock %}
