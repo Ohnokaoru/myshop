@@ -18,7 +18,7 @@
     {% for product in products %}
 
     <tr>
-        <td>{{product.product_name}}</td>
+        <td><a href="{% url 'edit-product' product.id %}">{{product.product_name}}</a></td>
         <td>{{product.product_price}}</td>
         {% if product_img %}
         <td><img src="{{ product.product_img.url }}" alt="{{ product.product_name }}" width="100"></td>

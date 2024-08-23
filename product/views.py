@@ -79,6 +79,29 @@ def index(request):
     )
 
 
-# 檢視商品
-# @staff_member_required
-# def detailproduct(request):
+# 修改商品
+@staff_member_required
+def edit_product(request, product_id):
+    message = ""
+    try:
+        product = Product.objects.get(id=product_id)
+
+    except Product.DoesNotExist:
+        return redirect("index")
+
+    if request.method == "POST":
+        form = ProductForm(request.POST, instance=product)
+
+        if form.is_valid():
+            form.save()
+            return redirect("index")
+
+        else:
+            message = "資料錯誤"
+
+    else:
+        form = ProductForm(instance=product)
+
+    return render(
+        request, "product/edit-product.html", {"form": form, "message": message}
+    )
