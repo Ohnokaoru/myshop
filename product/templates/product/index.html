@@ -20,7 +20,7 @@
     <tr>
         <td><a href="{% url 'edit-product' product.id %}">{{product.product_name}}</a></td>
         <td>{{product.product_price}}</td>
-        {% if product_img %}
+        {% if product.product_img %}
         <td><img src="{{ product.product_img.url }}" alt="{{ product.product_name }}" width="100"></td>
         {% else %}
         <p>No image available</p>

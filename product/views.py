@@ -17,7 +17,8 @@ def create_product(request):
         form = ProductForm(request.POST, request.FILES)
 
         if form.is_valid():
-            form.save()
+            productform = form.save()
+            print("Uploaded file path:", productform.product_img.path)
             return redirect("index")
 
         else:
@@ -90,10 +91,11 @@ def edit_product(request, product_id):
         return redirect("index")
 
     if request.method == "POST":
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST, request.FILES, instance=product)
 
         if form.is_valid():
-            form.save()
+            productform = form.save()
+            print("Uploaded file path:", productform.product_img.path)
             return redirect("index")
 
         else:
