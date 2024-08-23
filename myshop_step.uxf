@@ -210,11 +210,12 @@ UserProfile(forms.ModelForm)
       <x>240</x>
       <y>360</y>
       <w>150</w>
-      <h>110</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>product
 --
-imdex
+index
+index_staff
 view_detailproduct
 create_product
 edit_product

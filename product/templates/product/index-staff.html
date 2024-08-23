@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}我的商店首頁{% endblock %}
+{% block title %}我的商店首頁(員工版){% endblock %}
 
 {% block content %}
 <div id="title">
-    <h2>我的商店</h2>
+    <h2>我的商店(員工版)</h2>
 </div>
+
 
 <table>
     <tr>
@@ -13,6 +14,8 @@
         <th>商品價格</th>
         <th>商品圖片</th>
         <th>商品敘述</th>
+        <th>修改</th>
+        <th>刪除</th>
     </tr>
 
     {% for product in products %}
@@ -29,12 +32,19 @@
         </td>
 
         <td>{{product.product_description|slice:"10"}}</td>
+        <td><a href="{% url 'edit-product' product.id %}">修改</a></td>
+        <td><a href="{% url 'delete-product' product.id %}">刪除</a></td>
     </tr>
     {% endfor %}
 </table>
 
 <div id="page-a-button">
+    <a href="{% url 'create-product' %}" style="margin-left: 500px;">新增商品</a> <br>
+    {% if prev %}
     <a href="{% url 'index' %}?page_btn=prev&page={{page}}">上一頁</a>
+    {% endif %}
+    {% if next %}
     <a href="{% url 'index' %}?page_btn=next&page={{page}}">下一頁</a>
+    {% endif %}
 </div>
 {% endblock %}

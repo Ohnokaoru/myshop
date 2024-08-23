@@ -54,7 +54,8 @@ body {
 #edit-userprofile-form,
 #view-userprofile,
 #create-product-form,
-#edit-product-form {
+#edit-product-form,
+#delete-form {
     background-color: rgb(233, 196, 147);
     width: 30%;
     margin: auto;
@@ -67,4 +68,31 @@ body {
     font-weight: 700;
     color: red;
     margin-top: 5px;
+}
+
+
+table {
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+
+}
+
+th,
+tr,
+td {
+    border: solid 1px rgb(201, 169, 128);
+
+}
+
+th {
+    background-color: rgb(233, 196, 147);
+    width: 100px;
+
+}
+
+#delete-form {
+    font-weight: 700;
+    color: red;
+    text-align: center;
 }

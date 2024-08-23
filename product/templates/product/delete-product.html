@@ -6,13 +6,14 @@
 <div id="title">
     <h2>刪除商品</h2>
 </div>
-<form action="" method="POST">
-    {% csrf_token %}
-    {{product.product_name}}
+<div id="delete-form">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{product.product_name}} <br>
 
-    <input type="submit" name="" id="submit-button" value="確定刪除">
-</form>
+        <input type="submit" name="" id="submit-button" value="確定刪除">
+    </form>
 
-
+</div>
 
 {% endblock %}

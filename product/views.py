@@ -67,9 +67,16 @@ def index(request):
     next = page < total_page
     prev = page > 1
 
+    # 將員工與一般使用者分為兩個介面
+    if request.user.is_staff:
+        template = "product/index-staff.html"
+
+    else:
+        template = "product/index.html"
+
     return render(
         request,
-        "product/index.html",
+        template,
         {
             "products": products,
             "page": page,
@@ -113,6 +120,7 @@ def edit_product(request, product_id):
 @staff_member_required
 def delete_product(request, product_id):
     message = ""
+    product = None
     try:
         product = Product.objects.get(id=product_id)
 
