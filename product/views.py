@@ -107,3 +107,22 @@ def edit_product(request, product_id):
     return render(
         request, "product/edit-product.html", {"form": form, "message": message}
     )
+
+
+# 刪除商品
+@staff_member_required
+def delete_product(request, product_id):
+    message = ""
+    try:
+        product = Product.objects.get(id=product_id)
+
+    except Product.DoesNotExist:
+        return redirect("index")
+
+    if request.method == "POST":
+        product.delete()
+        message = "刪除商品成功"
+
+    return render(
+        request, "product/delete-product.html", {"message": message, "product": product}
+    )

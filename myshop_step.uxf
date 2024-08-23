@@ -43,10 +43,10 @@ user_logout</panel_attributes>
       <x>190</x>
       <y>40</y>
       <w>30</w>
-      <h>330</h>
+      <h>390</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;310.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;370.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -191,6 +191,34 @@ UserProfile(models.Model)
 --
 UserProfile(forms.ModelForm)
 </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>190</x>
+      <y>400</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>360</y>
+      <w>150</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>product
+--
+imdex
+view_detailproduct
+create_product
+edit_product
+delete_product</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

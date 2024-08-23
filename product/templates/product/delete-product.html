@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}刪除商品{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>刪除商品</h2>
+</div>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{product.product_name}}
+
+    <input type="submit" name="" id="submit-button" value="確定刪除">
+</form>
+
+
+
+{% endblock %}
