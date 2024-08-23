@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "chalogin",
     "captcha",
     "userprofile",
+    "product",
 ]
 
 MIDDLEWARE = [
@@ -129,6 +130,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-
+# 驗證碼基本設定
 CAPTCHA_FONT_SIZE = 30
 CAPTCHA_IMAGE_SIZE = (100, 50)
+
+
+# 圖片上傳
+MEDIA_URL = "/media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
