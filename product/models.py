@@ -10,4 +10,4 @@ class Product(models.Model):
     product_description = models.TextField(blank=True, default="")
 
     def __str__(self):
-        return f"{self.product_name} {self.product_price}"
+        return f"{self.product_name} {self.product_price} {self.product_img}"

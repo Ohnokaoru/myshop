@@ -135,7 +135,7 @@ CAPTCHA_FONT_SIZE = 30
 CAPTCHA_IMAGE_SIZE = (100, 50)
 
 
-# 圖片上傳
+# 圖片上傳路徑配置(需要與static同層新增media folder)
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
