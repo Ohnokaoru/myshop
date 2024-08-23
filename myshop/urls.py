@@ -27,6 +27,7 @@ urlpatterns = [
     path("", include("chalogin.urls")),
     path("captcha/", include("captcha.urls")),
     path("", include("userprofile.urls")),
+    path("", include("product.urls")),
 ]
 
 
