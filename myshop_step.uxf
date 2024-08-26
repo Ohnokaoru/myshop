@@ -216,10 +216,10 @@ UserProfile(forms.ModelForm)
 --
 index
 index_staff
-view_detailproduct
 create_product
 edit_product
-delete_product</panel_attributes>
+delete_product
+view_detailproduct</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

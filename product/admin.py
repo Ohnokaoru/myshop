@@ -4,7 +4,13 @@ from .models import Product
 
 # Register your models here.
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("id", "product_name", "product_price", "product_img")
+    list_display = (
+        "id",
+        "product_name",
+        "product_price",
+        "product_img",
+        "product_stock",
+    )
     list_filter = ("id", "product_name")
     search_fields = ("product_name",)
     ordering = ("id",)

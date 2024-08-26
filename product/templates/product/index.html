@@ -12,6 +12,7 @@
         <th>商品名稱</th>
         <th>商品價格</th>
         <th>商品圖片</th>
+        <th>商品庫存</th>
         <th>商品敘述</th>
     </tr>
 
@@ -28,6 +29,7 @@
             {%endif%}
         </td>
 
+        <td>{{product.product_stock}}</td>
         <td>{{product.product_description|slice:"10"}}</td>
     </tr>
     {% endfor %}
