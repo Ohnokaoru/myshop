@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}檢視購物車{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>檢視購物車</h2>
+</div>
+商品名稱:{{cart_item.product}}
+數量:{{cart_item.quantity}}
+
+{% endblock %}
