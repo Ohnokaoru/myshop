@@ -23,12 +23,13 @@ def add_cart(request, product_id):
 
     try:
         cart_item = CartItem.objects.get(user=request.user, product=product)
-        cart_item.quantity += 1
-        if cart_item.quantity == product.product_stock:
-            message = "添加數量已經最大囉!"
-        else:
+        if cart_item.quantity < product.product_stock:
+            cart_item.quantity += 1
             cart_item.save()
             message = "商品已在購物車，數量+1"
+
+        else:
+            message = "添加數量已經最大囉!"
 
     # 手動增加(不使用form)
     except CartItem.DoesNotExist:
@@ -42,9 +43,9 @@ def add_cart(request, product_id):
 # 檢視購物車內容
 @login_required
 def view_cart(request):
-    cart_items = CartItem.objects.all()
+    cart_items = CartItem.objects.filter(user=request.user)
 
-    if len(cart_items) == 0:
+    if len(cart_items) < 1:
         return redirect("index")
 
-    return render(render, "cart/view-cart.html", {"cart_items": cart_items})
+    return render(request, "cart/view-cart.html", {"cart_items": cart_items})

@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from product.models import Product
 
 
+# 加入購物車
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -15,13 +16,8 @@ class CartItem(models.Model):
 
     # 模型內部的配置類
     class Meta:
+        # 一個使用者與同一商品只會有一個實體物件，若有多個同樣商品，則quantity增加(在views.py做)
         unique_together = ("user", "product")
-
-    # 如果有同一使用者新增同一商品會引起錯誤
-    def save(self, *args, **kwargs):
-        if CartItem.objects.filter(user=self.user, product=self.product).exists():
-            raise ValidationError("")
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.product} {self.quantity}"

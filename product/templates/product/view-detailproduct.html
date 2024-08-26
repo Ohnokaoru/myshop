@@ -39,7 +39,9 @@
 
         </table>
     </div>
-    <input type="submit" value="新增到購物車">
+    <div id="add-a-button">
+        <a href="{% url 'add-cart' product.id %}">加入購物車</a>
+    </div>
 
 </div>
 
