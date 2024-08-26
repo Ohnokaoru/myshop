@@ -30,7 +30,7 @@ urlpatterns = [
     path("", include("product.urls")),
     path(
         "",
-        include("cart.usrls"),
+        include("cart.urls"),
     ),
 ]
 
