@@ -28,6 +28,10 @@ urlpatterns = [
     path("captcha/", include("captcha.urls")),
     path("", include("userprofile.urls")),
     path("", include("product.urls")),
+    path(
+        "",
+        include("cart.usrls"),
+    ),
 ]
 
 
