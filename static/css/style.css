@@ -115,8 +115,12 @@ th {
 
 
 #view-detail-table,
-#view-cart-table {
+#view-cart-table,
+#view-cart {
     background-color: antiquewhite;
+}
 
-
+view-cart th,
+tr {
+    height: 50px;
 }

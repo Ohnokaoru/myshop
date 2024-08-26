@@ -49,3 +49,20 @@ def view_cart(request):
         return redirect("index")
 
     return render(request, "cart/view-cart.html", {"cart_items": cart_items})
+
+
+# 修改購物車內容
+@login_required
+def edit_cart(request):
+    if request.method == "POST":
+        cart_items = CartItem.objects.filter(user=request.user)
+
+        for cart_item in cart_items:
+            edit_quantity = cart_item.quantity
+            cart_item.save()
+
+    return render(
+        request,
+        "cart/edit-cart.html",
+        {"cart_item": cart_item},
+    )

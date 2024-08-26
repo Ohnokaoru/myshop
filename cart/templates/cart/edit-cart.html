@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}修改購物車{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>修改購物車</h2>
+</div>
+
+<div id="view-cart">
+    <div id="view-cart-table">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <table style="width: 100%;">
+
+                <tr>
+                    <th>商品名稱</th>
+                    <th>數量變更</th>
+                    <th>庫存</th>
+                    <th>修改</th>
+
+
+                </tr>
+                {% for cart_item in cart_items %}
+                <tr>
+                    <td>{{cart_item.product.product_name}}</td>
+                    <td><input type="number" name="{{ cart_item.product.id }}" min="1"
+                            max="{{cart_item.product.product_stock}}" step="1" value="{{ cart_item.quantity }}"></td>
+                    <td>{{cart_item.product.product_stock}}</td>
+                    <td><input type="submit" name="{{ cart_item.product.id }}" value="修改數量"></td>
+
+                </tr>
+
+                {% endfor %}
+            </table>
+
+        </form>
+    </div>
+
+
+</div>
+
+{% endblock %}

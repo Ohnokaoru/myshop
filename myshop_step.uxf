@@ -228,10 +228,15 @@ view_detailproduct</panel_attributes>
       <x>240</x>
       <y>550</y>
       <w>150</w>
-      <h>70</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>cart
 --
+add_cart
+view_cart
+edit_cart
+delete_cart
+
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -239,7 +244,7 @@ view_detailproduct</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>240</x>
-      <y>650</y>
+      <y>680</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -252,7 +257,7 @@ view_detailproduct</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>240</x>
-      <y>750</y>
+      <y>780</y>
       <w>150</w>
       <h>70</h>
     </coordinates>
@@ -280,12 +285,26 @@ Product(models.Model)
     <coordinates>
       <x>650</x>
       <y>360</y>
-      <w>190</w>
+      <w>240</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>form
 --
 ProductForm(forms.ModelForm)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>550</y>
+      <w>190</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>model
+--
+CartItem(models.Model)
 </panel_attributes>
     <additional_attributes/>
   </element>

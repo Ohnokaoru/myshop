@@ -6,23 +6,30 @@
 <div id="title">
     <h2>檢視購物車</h2>
 </div>
-{% for cart_item in cart_items %}
+
 
 <div id="view-cart">
     <div id="view-cart-table">
         <table style="width: 100%;">
-            <tr>
-                <td>商品名稱</td>
-                <td>{{cart_item.product.product_name}}</td>
-            </tr>
 
             <tr>
-                <td>數量</td>
+                <th>商品名稱</th>
+                <th>數量</th>
+            </tr>
+            {% for cart_item in cart_items %}
+            <tr>
+                <td>{{cart_item.product.product_name}}</td>
                 <td>{{cart_item.quantity}}</td>
             </tr>
+
+            {% endfor %}
         </table>
     </div>
+    <div id="edit-a-button">
+        <a href="{% url 'edit-cart' %}">修改數量</a>
+    </div>
+
 </div>
 
-{% endfor %}
+
 {% endblock %}
