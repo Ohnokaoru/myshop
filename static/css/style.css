@@ -96,3 +96,22 @@ th {
     color: red;
     text-align: center;
 }
+
+#view-detailproduct {
+    background-color: rgb(233, 196, 147);
+    width: 40%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#view-detail-table td:first-child {
+    width: 100px;
+}
+
+
+#view-detail-table {
+    background-color: antiquewhite;
+
+
+}

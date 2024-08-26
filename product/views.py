@@ -134,3 +134,13 @@ def delete_product(request, product_id):
     return render(
         request, "product/delete-product.html", {"message": message, "product": product}
     )
+
+
+# 商品詳細頁面
+def view_detailproduct(request, product_id):
+    try:
+        product = Product.objects.get(id=product_id)
+    except Product.DoesNotExist:
+        return redirect("index")
+
+    return render(request, "product/view-detailproduct.html", {"product": product})

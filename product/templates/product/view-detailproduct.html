@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}商品詳細資訊{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>商品詳細資訊</h2>
+</div>
+
+<div id="view-detailproduct">
+    <div id="view-detail-table">
+        <table style="width: 100%;">
+            <tr>
+                <td>商品名稱</td>
+                <td>{{product.product_name}}</td>
+            </tr>
+
+            <tr>
+                <td>商品價格</td>
+                <td>{{product.product_price}}</td>
+            </tr>
+
+            <tr>
+                <td>商品圖片</td>
+                <td><img src="{{product.product_img.url }}" alt="{{product.product_name}}" style=" padding: 10px;"></td>
+
+            </tr>
+
+            <tr>
+                <td>商品庫存</td>
+                <td> {{product.product_stock}}</td>
+            </tr>
+
+            <tr>
+                <td>商品描述</td>
+                <td style="text-align: left;"> {{product.product_description}} </td>
+
+            </tr>
+
+        </table>
+    </div>
+    <input type="submit" value="新增到購物車">
+
+</div>
+
+
+{% endblock %}

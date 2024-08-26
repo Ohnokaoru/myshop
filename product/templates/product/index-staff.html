@@ -22,7 +22,7 @@
     {% for product in products %}
 
     <tr>
-        <td>{{product.product_name}}</td>
+        <td><a href="{% url 'view-detailproduct' product.id %}">{{product.product_name}}</a></td>
         <td>{{product.product_price}}</td>
         <td>
             {% if product.product_img %}
