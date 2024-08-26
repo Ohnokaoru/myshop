@@ -99,7 +99,8 @@ th {
     text-align: center;
 }
 
-#view-detailproduct {
+#view-detailproduct,
+#view-cart {
     background-color: rgb(233, 196, 147);
     width: 40%;
     margin: auto;
@@ -107,12 +108,14 @@ th {
     border-radius: 5px;
 }
 
-#view-detail-table td:first-child {
+#view-detail-table td:first-child,
+#view-cart-table td:first-child {
     width: 100px;
 }
 
 
-#view-detail-table {
+#view-detail-table,
+#view-cart-table {
     background-color: antiquewhite;
 
 

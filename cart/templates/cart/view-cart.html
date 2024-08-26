@@ -7,8 +7,22 @@
     <h2>檢視購物車</h2>
 </div>
 {% for cart_item in cart_items %}
-商品名稱:{{cart_item.product}} <br>
-數量:{{cart_item.quantity}} <br>
+
+<div id="view-cart">
+    <div id="view-cart-table">
+        <table style="width: 100%;">
+            <tr>
+                <td>商品名稱</td>
+                <td>{{cart_item.product.product_name}}</td>
+            </tr>
+
+            <tr>
+                <td>數量</td>
+                <td>{{cart_item.quantity}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 {% endfor %}
 {% endblock %}
