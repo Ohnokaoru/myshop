@@ -118,9 +118,14 @@ th {
 #view-cart-table,
 #view-cart {
     background-color: antiquewhite;
+
 }
 
 view-cart th,
 tr {
     height: 50px;
+}
+
+#view-cart input {
+    margin: auto;
 }

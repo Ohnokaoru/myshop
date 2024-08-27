@@ -51,18 +51,25 @@ def view_cart(request):
     return render(request, "cart/view-cart.html", {"cart_items": cart_items})
 
 
-# 修改購物車內容
+# # 修改購物車(手動修改儲存)
 @login_required
-def edit_cart(request):
-    if request.method == "POST":
-        cart_items = CartItem.objects.filter(user=request.user)
+def edit_cart(request, product_id):
+    try:
+        cart_item = CartItem.objects.get(id=product_id, user=request.user)
+    except CartItem.DoesNotExist:
+        return redirect("view-cart")
 
-        for cart_item in cart_items:
-            edit_quantity = cart_item.quantity
-            cart_item.save()
+    if request.method == "POST":
+        quantity = int(request.POST.get("quantity"))
+
+        # 存檔
+        cart_item.quantity = quantity
+        cart_item.save()
+        return redirect("view-cart")
+
+    else:
+        quantity = cart_item.quantity
 
     return render(
-        request,
-        "cart/edit-cart.html",
-        {"cart_item": cart_item},
+        request, "cart/edit-cart.html", {"cart_item": cart_item, "quantity": quantity}
     )
