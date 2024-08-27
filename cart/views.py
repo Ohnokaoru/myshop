@@ -51,7 +51,7 @@ def view_cart(request):
     return render(request, "cart/view-cart.html", {"cart_items": cart_items})
 
 
-# # 修改購物車(手動修改儲存)
+# 修改與刪除購物車(手動修改儲存)
 @login_required
 def edit_cart(request, product_id):
     try:
@@ -60,12 +60,19 @@ def edit_cart(request, product_id):
         return redirect("view-cart")
 
     if request.method == "POST":
-        quantity = int(request.POST.get("quantity"))
+        button = request.POST.get("button")
 
-        # 存檔
-        cart_item.quantity = quantity
-        cart_item.save()
-        return redirect("view-cart")
+        if button == "修改":
+            quantity = int(request.POST.get("quantity"))
+
+            # 存檔
+            cart_item.quantity = quantity
+            cart_item.save()
+            return redirect("view-cart")
+
+        elif button == "刪除":
+            cart_item.delete()
+            return redirect("view-cart")
 
     else:
         quantity = cart_item.quantity

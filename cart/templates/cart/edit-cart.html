@@ -18,6 +18,8 @@
                     <th>數量</th>
                     <th>庫存</th>
                     <th></th>
+                    <th></th>
+
 
 
 
@@ -29,9 +31,11 @@
                             value="{{ cart_item.quantity }}"></td>
                     <td>{{cart_item.product.product_stock}}</td>
                     <td rowspan="2">
-                        <input type="submit" value="修改" style="text-align: center;">
+                        <input type="submit" name="button" value="修改" style="text-align: center;">
                     </td>
-
+                    <td rowspan="2">
+                        <input type="submit" name="button" value="刪除">
+                    </td>
 
                 </tr>
 
