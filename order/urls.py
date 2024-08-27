@@ -1,4 +1,7 @@
 from django.urls import path, include
+from . import views
 
 
-urlpatterns = []
+urlpatterns = [
+    path("confirm-order/", views.confirm_order, name="confirm-order"),
+]

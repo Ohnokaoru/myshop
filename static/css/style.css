@@ -19,7 +19,8 @@ body {
 
 #edit-a-button a,
 #page-a-button a,
-#add-a-button a {
+#add-a-button a,
+#confirm-a-button a {
     text-decoration: none;
     background-color: white;
     padding: 5px;
@@ -32,7 +33,8 @@ body {
 
 #edit-a-button,
 #page-a-button,
-#add-a-button {
+#add-a-button,
+#confirm-a-button {
     text-align: center;
     padding: 10px;
 }

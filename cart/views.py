@@ -59,10 +59,21 @@ def view_cart(request):
         cart_items.delete()
         message = "購物車沒項目，請繼續購物"
 
+    # 是否可以出現下訂單鈕
+    if total_money > 0:
+        have_total_money = total_money
+    else:
+        have_total_money = None
+
     return render(
         request,
         "cart/view-cart.html",
-        {"cart_items": cart_items, "total_money": total_money, "message": message},
+        {
+            "cart_items": cart_items,
+            "total_money": total_money,
+            "have_total_money": have_total_money,
+            "message": message,
+        },
     )
 
 

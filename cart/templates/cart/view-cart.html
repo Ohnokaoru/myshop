@@ -40,9 +40,12 @@
             </table>
         </form>
     </div>
-
     <div id="message"> {{message}}</div>
 </div>
-
+{% if have_total_money %}
+<div id="confirm-a-button">
+    <a href="{% url 'confirm-order' %}">下訂單</a>
+</div>
+{% endif %}
 
 {% endblock %}

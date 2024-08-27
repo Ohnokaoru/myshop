@@ -10,7 +10,7 @@ class Order(models.Model):
     order_time = models.DateTimeField(auto_now_add=True)
     total_amount = models.PositiveIntegerField(default=0)
     status_choices = [
-        ("panding", "未付款"),
+        ("pending", "未付款"),
         ("complated", "付款完成"),
         ("cancelled", "取消"),
     ]
