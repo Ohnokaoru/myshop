@@ -43,20 +43,26 @@ def add_cart(request, product_id):
 # 檢視購物車內容
 @login_required
 def view_cart(request):
+    message = ""
     cart_items = CartItem.objects.filter(user=request.user)
 
     if len(cart_items) < 1:
-        return redirect("index")
+        message = "購物車沒項目，請繼續購物"
 
     total_money = 0
     for cart_item in cart_items:
         item_money = int(cart_item.quantity) * int(cart_item.product.product_price)
         total_money += item_money
 
+    if request.method == "POST":
+        clear_all = request.POST.get("clear_all")
+        cart_items.delete()
+        message = "購物車沒項目，請繼續購物"
+
     return render(
         request,
         "cart/view-cart.html",
-        {"cart_items": cart_items, "total_money": total_money},
+        {"cart_items": cart_items, "total_money": total_money, "message": message},
     )
 
 
