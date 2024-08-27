@@ -235,7 +235,7 @@ view_detailproduct</panel_attributes>
 add_cart
 view_cart
 edit_cart
-delete_cart
+
 
 </panel_attributes>
     <additional_attributes/>
@@ -307,5 +307,29 @@ ProductForm(forms.ModelForm)
 CartItem(models.Model)
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>70</x>
+      <y>570</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Note..
+edit_cart
+涵蓋刪除功能</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>200</x>
+      <y>600</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

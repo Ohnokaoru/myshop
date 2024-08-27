@@ -15,12 +15,14 @@
             <tr>
                 <th>商品名稱</th>
                 <th>數量</th>
+                <th>價格</th>
                 <th>修改</th>
             </tr>
             {% for cart_item in cart_items %}
             <tr>
                 <td>{{cart_item.product.product_name}}</td>
                 <td>{{cart_item.quantity}}</td>
+                <td>{{cart_item.product.product_price}}</td>
                 <td>
                     <div id="edit-a-button">
                         <a href="{% url 'edit-cart' cart_item.id %}">修改數量</a>
@@ -29,7 +31,11 @@
             </tr>
 
             {% endfor %}
+            <tr>
+                <td colspan="4"> 總金額:{{total_money}}</td>
+            </tr>
         </table>
+
     </div>
 
 

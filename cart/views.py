@@ -48,7 +48,16 @@ def view_cart(request):
     if len(cart_items) < 1:
         return redirect("index")
 
-    return render(request, "cart/view-cart.html", {"cart_items": cart_items})
+    total_money = 0
+    for cart_item in cart_items:
+        item_money = int(cart_item.quantity) * int(cart_item.product.product_price)
+        total_money += item_money
+
+    return render(
+        request,
+        "cart/view-cart.html",
+        {"cart_items": cart_items, "total_money": total_money},
+    )
 
 
 # 修改與刪除購物車(手動修改儲存)
