@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}歷史訂單{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>歷史訂單</h2>
+</div>
+
+<div id="get-orders">
+    {% for order in orders %}
+    編號:{{order.id}} <br>
+    總金額:{{order.total_amount}} <br>
+    狀態:{{order.status}} <br>
+    送貨地址:{{order.shipping_address}} <br>
+    訂貨時間:{{order.order_time}} <br>
+    <br>
+    <hr>
+    {% endfor %}
+</div>
+<div id="page-a-button">
+    {% if prev %}
+    <a href="{% url 'get-orders' %}?page_btn=prev&page={{page}}">上一頁</a>
+    {% endif %}
+
+    {% if next %}
+    <a href="{% url 'get-orders' %}?page_btn=next&page={{page}}">下一頁</a>
+    {% endif %}
+</div>
+{% endblock %}

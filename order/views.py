@@ -9,6 +9,7 @@ import os
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+import math
 
 # Create your views here.
 """
@@ -160,4 +161,57 @@ def confirm_order(request):
         request,
         "order/confirm-order.html",
         {"order": order, "order_items": order_items},
+    )
+
+
+# 查詢歷史訂單
+@login_required
+def get_orders(request):
+    message = ""
+    orders = None
+    orders = Order.objects.all().order_by("-order_time")
+
+    total_order = len(orders)
+    if total_order == 0:
+        message = "沒有購物紀錄"
+
+    page_size = 5
+    page = int(request.GET.get("page", 1))
+    total_page = math.ceil(total_order / page_size)
+    page_btn = request.GET.get("page_btn", "")
+
+    # 合理頁數
+    if page > total_page:
+        page = total_page
+
+    if page < 1:
+        page = 1
+
+    # 點擊頁數
+    # 上一頁
+    if page_btn == "prev" and page > 1:
+        page -= 1
+
+    # 下一頁
+    elif page_btn == "next" and page < total_page:
+        page += 1
+
+    # 計算頁數
+    start = (page - 1) * page_size
+    end = start + page_size
+    orders = Order.objects.all().order_by("-order_time")[start:end]
+
+    next = page < total_page
+    prev = page > 1
+
+    return render(
+        request,
+        "order/get-orders.html",
+        {
+            "page": page,
+            "total_page": total_page,
+            "orders": orders,
+            "prev": prev,
+            "next": next,
+        },
     )

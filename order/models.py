@@ -11,7 +11,7 @@ class Order(models.Model):
     total_amount = models.PositiveIntegerField(default=0)
     status_choices = [
         ("pending", "未付款"),
-        ("complated", "付款完成"),
+        ("completed", "付款完成"),
         ("cancelled", "取消"),
     ]
     status = models.CharField(max_length=20, choices=status_choices)
