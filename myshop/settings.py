@@ -141,3 +141,14 @@ CAPTCHA_IMAGE_SIZE = (100, 50)
 MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
+# 設定Django 使用 SMTP後端發送郵件設定
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# 設定SMTP伺服器
+EMAIL_HOST = "smtp.gmail.com"
+# 使用 SSL 進行加密連接
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "x06nk4alau@gmail.com"
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_APP_PASSWORD")

@@ -250,7 +250,8 @@ edit_cart
     </coordinates>
     <panel_attributes>order
 --
-confirm_order</panel_attributes>
+confirm_order
+view_order</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

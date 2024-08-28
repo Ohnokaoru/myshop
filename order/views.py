@@ -4,6 +4,11 @@ from cart.models import CartItem
 from .models import Order, OrderItem
 from userprofile.models import UserProfile
 from product.models import Product
+import smtplib
+import os
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 # Create your views here.
 """
@@ -115,6 +120,41 @@ def confirm_order(request):
 
     # 清空購物車
     cart_items.delete()
+
+    # 寄送訂單郵件
+
+    subject = "感謝您在myshop消費"
+    # 寄件者
+    sender_email = "x06nk4alau@gmail.com"
+    # 收件者
+    receiver_email = request.user.userprofile.email
+
+    # 使用 Django 的模板系統來渲染郵件的內容(html)
+    content = render_to_string(
+        "order/confirm-order.html", {"order": order, "order_items": order_items}
+    )
+
+    # 純文字
+    content_plain = strip_tags(content)
+
+    # 支持多格式
+    email = EmailMultiAlternatives(
+        subject=subject,
+        # 純文字內容
+        body=content_plain,
+        from_email=sender_email,
+        to=[receiver_email],
+    )
+
+    # 附加HTML內容作為郵件的另一種格式
+    email.attach_alternative(content, "text/html")
+
+    # 發送郵件
+    try:
+        email.send()
+        print("email成功發送")
+    except Exception as e:
+        print(f"發送錯誤: {e}")
 
     return render(
         request,
