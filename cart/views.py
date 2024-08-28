@@ -49,10 +49,10 @@ def view_cart(request):
     if len(cart_items) < 1:
         message = "購物車沒項目，請繼續購物"
 
-    total_money = 0
+    total_amount = 0
     for cart_item in cart_items:
         item_money = int(cart_item.quantity) * int(cart_item.product.product_price)
-        total_money += item_money
+        total_amount += item_money
 
     if request.method == "POST":
         clear_all = request.POST.get("clear_all")
@@ -60,18 +60,18 @@ def view_cart(request):
         message = "購物車沒項目，請繼續購物"
 
     # 是否可以出現下訂單鈕
-    if total_money > 0:
-        have_total_money = total_money
+    if total_amount > 0:
+        have_total_amount = total_amount
     else:
-        have_total_money = None
+        have_total_amount = None
 
     return render(
         request,
         "cart/view-cart.html",
         {
             "cart_items": cart_items,
-            "total_money": total_money,
-            "have_total_money": have_total_money,
+            "total_amount": total_amount,
+            "have_total_amount": have_total_amount,
             "message": message,
         },
     )

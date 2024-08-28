@@ -250,7 +250,7 @@ edit_cart
     </coordinates>
     <panel_attributes>order
 --
-</panel_attributes>
+confirm_order</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -343,6 +343,7 @@ edit_cart
     <panel_attributes>model
 --
 Order(models.Model)
+OrderItem(models.Model)
 </panel_attributes>
     <additional_attributes/>
   </element>

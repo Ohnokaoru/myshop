@@ -59,7 +59,8 @@ body {
 #view-userprofile,
 #create-product-form,
 #edit-product-form,
-#delete-form {
+#delete-form,
+#confirm-order {
     background-color: rgb(233, 196, 147);
     width: 30%;
     margin: auto;

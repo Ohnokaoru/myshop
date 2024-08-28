@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}預覽訂單{% endblock %}
+
+{% block content %}
+<div id="title">
+    <h2>預覽訂單</h2>
+</div>
+
+<div id="confirm-order">
+    <h3>商品資訊</h3>
+    {% for order_item in order_items %}
+    商品名稱:{{order_item.product.product_name}} <br>
+    數量:{{order_item.quantity}} <br>
+    {% endfor %}
+    總價:{{order.total_amount}}
+
+    <h3>訂單資訊</h3>
+    訂貨人:{{order.user.userprofile.name}} <br>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="">寄送地址:</label>
+        <input type="text" name=shipping_address value={{order.shipping_address}}> <br>
+        <input type="submit" id="submit-button" value="更改寄送地址">
+    </form>
+
+
+    <div id="confirm-a-button">
+        <a href="{% url 'confirm-order' %}">確認下單</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -35,16 +35,16 @@
                 </tr>
                 {% endfor %}
                 <tr style="border: none;">
-                    <td colspan="4" style="border: none;"> 總金額:{{total_money}}</td>
+                    <td colspan="4" style="border: none;"> 總金額:{{total_amount}}</td>
                 </tr>
             </table>
         </form>
     </div>
     <div id="message"> {{message}}</div>
 </div>
-{% if have_total_money %}
+{% if have_total_amount %}
 <div id="confirm-a-button">
-    <a href="{% url 'confirm-order' %}">下訂單</a>
+    <a href="{% url 'view-order' %}">預覽訂單</a>
 </div>
 {% endif %}
 
