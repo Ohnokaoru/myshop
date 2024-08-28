@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from cart.models import CartItem
 from .models import Order, OrderItem
 from userprofile.models import UserProfile
+from product.models import Product
 
 # Create your views here.
 """
@@ -14,6 +15,7 @@ from userprofile.models import UserProfile
 # 預覽訂單資訊
 @login_required
 def view_order(request):
+    message = ""
     # 購物車內容
     cart_items = CartItem.objects.filter(user=request.user)
     if len(cart_items) == 0:
@@ -45,6 +47,7 @@ def view_order(request):
             order.shipping_address = new_address
             # 將新寄送地址以session保存
             request.session["shipping_address"] = new_address
+            message = "地址更改成功!!!"
 
     # 使用基本資料的地址
     else:
@@ -55,7 +58,7 @@ def view_order(request):
     return render(
         request,
         "order/view-order.html",
-        {"order": order, "order_items": order_items},
+        {"order": order, "order_items": order_items, "message": message},
     )
 
 
@@ -74,6 +77,7 @@ def confirm_order(request):
     total_amount = 0
     order_items = []
     for cart_item in cart_items:
+
         # 建立OrderItem抓取購物車內容
         order_item = OrderItem.objects.create(
             order=order,
@@ -84,6 +88,11 @@ def confirm_order(request):
         order_items.append(order_item)
 
         total_amount += cart_item.product.product_price * cart_item.quantity
+
+        # 更新庫存數量
+        if cart_item.product.product_stock >= cart_item.quantity:
+            cart_item.product.product_stock -= cart_item.quantity
+            cart_item.product.save()
 
     order.total_amount = total_amount
     order.status = "pending"

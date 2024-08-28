@@ -22,7 +22,8 @@
         {% csrf_token %}
         <label for="">寄送地址:</label>
         <input type="text" name=shipping_address value={{order.shipping_address}}> <br>
-        <input type="submit" id="submit-button" value="更改寄送地址">
+        <input type="submit" id="submit-button" value="更改寄送地址"> <br>
+        <div id="message"> {{message}}</div>
     </form>
 
 

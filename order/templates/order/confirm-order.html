@@ -17,21 +17,10 @@
     總價:{{order.total_amount}}
 
     <h3>訂單資訊</h3>
-    訂單編號:{{order.id}}
+    訂單編號:{{order.id}} <br>
     訂貨人:{{order.user.userprofile.name}} <br>
     訂貨時間:{{order.order_time}} <br>
     狀態:{{order.status}} <br>
     寄送地址:{{order.shipping_address}}
 
-    <div id="confirm-a-button">
-        <form action="{% url 'confirm-order' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit">確認下單</button>
-
-    </div>
-</div>
-<div id="confirm-a-button">
-    <a href="{% url 'view-order'%}">回上頁編輯地址</a>
-</div>
-
-{% endblock %}
+    {% endblock %}
