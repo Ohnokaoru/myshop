@@ -43,6 +43,8 @@ def add_cart(request, product_id):
 # 檢視購物車內容
 @login_required
 def view_cart(request):
+
+    # 處理庫存小於數量問題
     message = ""
     cart_items = CartItem.objects.filter(user=request.user)
 
@@ -51,8 +53,20 @@ def view_cart(request):
 
     total_amount = 0
     for cart_item in cart_items:
+
+        if cart_item.product.product_stock == 0:
+            cart_item.delete()
+
+        elif cart_item.quantity > cart_item.product.product_stock:
+            message = f"你的{cart_item.product.product_name}需求大於庫存量，已幫你更新為最大庫存量"
+            cart_item.quantity = cart_item.product.product_stock
+            cart_item.save()
+
         item_money = int(cart_item.quantity) * int(cart_item.product.product_price)
         total_amount += item_money
+
+    # 更新商品清單
+    cart_items = CartItem.objects.filter(user=request.user)
 
     if request.method == "POST":
         clear_all = request.POST.get("clear_all")

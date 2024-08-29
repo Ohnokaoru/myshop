@@ -134,7 +134,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # 驗證碼基本設定
 CAPTCHA_FONT_SIZE = 30
-CAPTCHA_IMAGE_SIZE = (100, 50)
+CAPTCHA_IMAGE_SIZE = (150, 50)
 
 
 # 圖片上傳路徑配置(需要與static同層新增media folder)

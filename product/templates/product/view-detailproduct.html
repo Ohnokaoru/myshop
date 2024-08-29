@@ -28,7 +28,12 @@
 
             <tr>
                 <td>商品庫存</td>
-                <td> {{product.product_stock}}</td>
+
+                {% if product.product_stock %}
+                <td>{{product.product_stock}}</td>
+                {% else %}
+                <td>缺貨中</td>
+                {% endif %}
             </tr>
 
             <tr>
@@ -40,7 +45,11 @@
         </table>
     </div>
     <div id="add-a-button">
+        {% if product.product_stock %}
         <a href="{% url 'add-cart' product.id %}">加入購物車</a>
+
+        {% endif %}
+
     </div>
 
 </div>

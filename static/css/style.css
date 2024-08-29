@@ -74,6 +74,7 @@ body {
     font-weight: 700;
     color: red;
     margin-top: 5px;
+    text-align: center;
 }
 
 
@@ -106,7 +107,7 @@ th {
 #view-detailproduct,
 #view-cart {
     background-color: rgb(233, 196, 147);
-    width: 40%;
+    width: 45%;
     margin: auto;
     padding: 20px;
     border-radius: 5px;

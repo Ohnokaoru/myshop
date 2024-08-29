@@ -28,8 +28,11 @@
             沒圖片
             {%endif%}
         </td>
-
+        {% if product.product_stock %}
         <td>{{product.product_stock}}</td>
+        {% else %}
+        <td>缺貨中</td>
+        {% endif %}
         <td>{{product.product_description|slice:"10"}}</td>
     </tr>
     {% endfor %}

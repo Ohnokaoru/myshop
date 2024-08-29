@@ -16,26 +16,43 @@
                 <tr style="border: none;">
                     <td colspan="4" style="border: none;"> <input type="submit" name="clear_all" value="清空購物車"></td>
                 </tr>
+
                 <tr>
                     <th>商品名稱</th>
                     <th>數量</th>
+                    <th>商品庫存</th>
                     <th>價格</th>
                     <th>修改</th>
                 </tr>
+
                 {% for cart_item in cart_items %}
+
                 <tr>
                     <td>{{cart_item.product.product_name}}</td>
                     <td>{{cart_item.quantity}}</td>
+
+
+                    {% if cart_item.product.product_stock %}
+                    <td>{{cart_item.product.product_stock}}</td>
+                    {% else %}
+                    <td>缺貨中</td>
+                    {% endif %}
+
                     <td>{{cart_item.product.product_price}}</td>
                     <td>
                         <div id="edit-a-button">
                             <a href="{% url 'edit-cart' cart_item.id %}">修改數量</a>
                         </div>
                     </td>
+
                 </tr>
                 {% endfor %}
                 <tr style="border: none;">
-                    <td colspan="4" style="border: none;"> 總金額:{{total_amount}}</td>
+                    <td colspan="4" style="border: none;">*缺貨項目會自動移出購物車</td>
+                </tr>
+
+                <tr style="border: none;">
+                    <td colspan="4" style="border: none;font-weight: 700;"> 總金額:{{total_amount}}</td>
                 </tr>
             </table>
         </form>
