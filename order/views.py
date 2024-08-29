@@ -13,7 +13,7 @@ import math
 
 # Create your views here.
 """
-購物流程:商品加入購物車->檢視購物車->確認訂單(按鈕)->創建Order與OrderItem->清空購物車
+購物流程:商品加入購物車->檢視購物車->確認訂單(按鈕)->創建Order與OrderItem->更改地址->清空購物車
 ->寄送信件
 """
 
@@ -168,8 +168,8 @@ def confirm_order(request):
 @login_required
 def get_orders(request):
     message = ""
-    orders = None
-    orders = Order.objects.all().order_by("-order_time")
+
+    orders = Order.objects.filter(user=request.user).order_by("-order_time")
 
     total_order = len(orders)
     if total_order == 0:
@@ -199,10 +199,16 @@ def get_orders(request):
     # 計算頁數
     start = (page - 1) * page_size
     end = start + page_size
-    orders = Order.objects.all().order_by("-order_time")[start:end]
+    orders = Order.objects.filter(user=request.user).order_by("-order_time")[start:end]
 
     next = page < total_page
     prev = page > 1
+
+    # 將每一筆order有多筆order_item，將所有相同id的物件存一起
+    order_items_dict = {}
+    for order in orders:
+        order_items = OrderItem.objects.filter(order=order)
+        order_items_dict[order.id] = order_items
 
     return render(
         request,
@@ -213,5 +219,7 @@ def get_orders(request):
             "orders": orders,
             "prev": prev,
             "next": next,
+            "order_items_dict": order_items_dict,
+            "message": message,
         },
     )

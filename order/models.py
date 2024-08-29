@@ -21,7 +21,7 @@ class Order(models.Model):
         return f"{self.user.username} {self.total_amount} {self.status}"
 
 
-# 管理訂單中的商品
+# 管理訂單中的商品，轉移購物車內商品用
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
